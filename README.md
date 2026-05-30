@@ -2,7 +2,7 @@
 
 A custom Discord moderation and whitelist management bot built with Discord.js v14
 
-![Version](https://img.shields.io/badge/version-1.0.0-blue)
+![Version](https://img.shields.io/badge/version-0.1.0-blue)
 ![Node](https://img.shields.io/badge/node-22%2B-green)
 ![License](https://img.shields.io/badge/license-VELORIAN--NC-red)
 
