@@ -135,3 +135,7 @@ dist
 .yarn/install-state.gz
 .pnp.*
 bot.env
+desktop.ini
+bot.env
+.env
+data/*.json
