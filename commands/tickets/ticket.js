@@ -9,13 +9,14 @@ module.exports = {
   async execute(interaction) {
     const { guild, user } = interaction;
 
-    const existing = guild.channels.cache.find(c => c.name === `ticket-${user.username.toLowerCase()}`);
+    const ticketName = `ticket-${user.id}`;
+    const existing = guild.channels.cache.find(c => c.name === ticketName);
     if (existing) {
       return interaction.reply({ content: `You already have an open ticket: ${existing}`, ephemeral: true });
     }
 
     const channel = await guild.channels.create({
-      name: `ticket-${user.username}`,
+      name: ticketName,
       parent: config.ticketCategoryId || null,
       permissionOverwrites: [
         { id: guild.id,           deny:  ['ViewChannel'] },
