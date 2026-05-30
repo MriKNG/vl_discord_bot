@@ -2,6 +2,13 @@ const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('
 const config = require('../../config/config.js');
 
 async function handleReview(interaction) {
+  if (!interaction.member.roles.cache.has(config.staffRoleId)) {
+    return interaction.reply({
+      content: 'You are not allowed to review applications.',
+      ephemeral: true
+    });
+  }
+  
   const [action, userId] = interaction.customId.split('_');
   const member = await interaction.guild.members.fetch(userId).catch(() => null);
 

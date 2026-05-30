@@ -13,6 +13,18 @@ module.exports = {
     const reason = interaction.options.getString('reason') ?? 'No reason provided';
 
     if (!target) return interaction.reply({ content: 'User not found.', ephemeral: true });
+    if (target.id === interaction.user.id) {
+      return interaction.reply({ content: 'You cannot ban yourself.', ephemeral: true });
+    }
+
+    if (target.id === interaction.guild.ownerId) {
+      return interaction.reply({ content: 'You cannot ban the server owner.', ephemeral: true });
+    }
+
+    if (target.roles.highest.position >= interaction.member.roles.highest.position) {
+      return interaction.reply({ content: 'You cannot ban this member because their role is equal to or higher than yours.', ephemeral: true });
+    }
+    
     if (!target.bannable) return interaction.reply({ content: 'I cannot ban this user.', ephemeral: true });
 
     await target.send({

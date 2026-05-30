@@ -25,6 +25,21 @@ module.exports = {
   async execute(interaction) {
     const target = interaction.options.getMember('user');
     const reason = interaction.options.getString('reason');
+    if (!target) {
+      return interaction.reply({ content: 'User not found.', ephemeral: true });
+    }
+
+    if (target.id === interaction.user.id) {
+      return interaction.reply({ content: 'You cannot warn yourself.', ephemeral: true });
+    }
+
+    if (target.id === interaction.guild.ownerId) {
+      return interaction.reply({ content: 'You cannot warn the server owner.', ephemeral: true });
+    }
+
+    if (target.roles.highest.position >= interaction.member.roles.highest.position) {
+      return interaction.reply({ content: 'You cannot warn this member because their role is equal to or higher than yours.', ephemeral: true });
+    }
 
     const warnings = loadWarnings();
     if (!warnings[target.id]) warnings[target.id] = [];
@@ -61,8 +76,16 @@ module.exports = {
 
     // Auto-ban on max warnings
     if (count >= config.maxWarningsBeforeBan) {
+      if (!target.bannable) {
+        return interaction.followUp({
+          content: `⚠️ ${target.user.tag} reached ${count} warnings, but I cannot ban them due to role hierarchy or permissions.`
+        });
+      }
+
       await target.ban({ reason: `Reached ${count} warnings` });
-      await interaction.followUp({ content: `⚠️ ${target.user.tag} has been auto-banned for reaching ${count} warnings.` });
+      await interaction.followUp({
+        content: `⚠️ ${target.user.tag} has been auto-banned for reaching ${count} warnings.`
+      });
     }
   }
 };

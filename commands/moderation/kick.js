@@ -13,6 +13,18 @@ module.exports = {
     const reason = interaction.options.getString('reason') ?? 'No reason provided';
 
     if (!target) return interaction.reply({ content: 'User not found.', ephemeral: true });
+    if (target.id === interaction.user.id) {
+      return interaction.reply({ content: 'You cannot kick yourself.', ephemeral: true });
+    }
+
+    if (target.id === interaction.guild.ownerId) {
+      return interaction.reply({ content: 'You cannot kick the server owner.', ephemeral: true });
+    }
+
+    if (target.roles.highest.position >= interaction.member.roles.highest.position) {
+      return interaction.reply({ content: 'You cannot kick this member because their role is equal to or higher than yours.', ephemeral: true });
+    }
+
     if (!target.kickable) return interaction.reply({ content: 'I cannot kick this user.', ephemeral: true });
 
     await target.send({
