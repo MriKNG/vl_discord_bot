@@ -134,8 +134,9 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# Critical
 bot.env
 desktop.ini
-bot.env
 .env
 data/*.json
