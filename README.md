@@ -1,4 +1,4 @@
-# Velorian Discord Bot - WORK IN PROGRESS
+# Velorian Discord Bot
 
 A custom Discord moderation and whitelist management bot built with Discord.js v14
 
@@ -92,21 +92,19 @@ npm start
 
 ### Available Features (v1.0.0)
 #### Moderation
-/warn - Warn a user, automatic ban after configured max warnings
-/kick - Kick a user from the Discord server
-/ban - Ban a user from the Discord server
+- `/warn` - Warn a user, automatic ban after configured max warnings
+- `/kick` - Kick a user from the Discord server
+- `/ban` - Ban a user from the Discord server
 
 #### Applications
-/apply - Submit an application, questions can be adjusted in apply.js
-
+- `/apply` - Submit an application, questions can be adjusted in apply.js
 - Application answer will automatically be sent to your configured channel
 - Staff can review, accept and deny applications
 
 #### Tickets
-/ticket - Open a support ticket
-/close - Close a support ticket
-
-Automatic staff access
+- `/ticket` - Open a support ticket
+- `/close` - Close a support ticket
+- Automatic staff access
 
 ### Disclaimer
 This project is provided as-is without warranty or support.
