@@ -1,7 +1,7 @@
 const { Client, GatewayIntentBits, Collection } = require('discord.js');
 const fs = require('fs');
 const path = require('path');
-require('dotenv').config({ path: './bot.env' });
+require('dotenv').config();
 
 const client = new Client({
   intents: [
@@ -32,6 +32,14 @@ for (const file of fs.readdirSync(eventsPath).filter(f => f.endsWith('.js'))) {
   } else {
     client.on(event.name, (...args) => event.execute(...args, client));
   }
+}
+
+process.on('unhandledRejection', console.error);
+process.on('uncaughtException', console.error);
+
+if (!process.env.TOKEN) {
+  console.error('Missing TOKEN in .env');
+  process.exit(1);
 }
 
 client.login(process.env.TOKEN);
