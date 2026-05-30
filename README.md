@@ -6,17 +6,17 @@ A custom Discord moderation and whitelist management bot built with Discord.js v
 ![Node](https://img.shields.io/badge/node-22%2B-green)
 ![License](https://img.shields.io/badge/license-VELORIAN--NC-red)
 
-## Project Status:
+## Project Status
 This project is currently in active development.
 
 Features, commands, and configuration options are subject to change between releases.
 
-## Security Note:
+## Security Note
 Never commit your `.env` file or Discord bot token.
 
 If your token is exposed, immediately regenerate it through the [Discord Developer Portal](https://discord.com/developers/home).
 
-## Features:
+## Features
 - Moderation commands
 - Warning system with auto-ban
 - Application system
@@ -24,7 +24,7 @@ If your token is exposed, immediately regenerate it through the [Discord Develop
 - Staff review tools
 - Slash commands
 
-## License:
+## License
 This project is licensed under the VELORIAN Non-commercial License v1.0.
 
 You may:
@@ -46,18 +46,18 @@ See the LICENSE file for full details.
 - Discord.js v14
 
 ## Installation
-### Clone the repository:
+### Clone the repository
 ```bash
 git clone https://github.com/MriKNG/vl_discord_bot.git
 cd vl_discord_bot
 ```
 
-### Install dependencies:
+### Install dependencies
 ```bash
 npm install
 ```
 
-### Environment setup:
+### Environment setup
 #### Environment variables
 Create a `.env` file:
 
@@ -90,25 +90,25 @@ npm run deploy
 npm start
 ```
 
-### Available Features (v1.0.0):
-#### Moderation:
+### Available Features (v1.0.0)
+#### Moderation
 /warn - Warn a user, automatic ban after configured max warnings
 /kick - Kick a user from the Discord server
 /ban - Ban a user from the Discord server
 
-#### Applications:
+#### Applications
 /apply - Submit an application, questions can be adjusted in apply.js
 
 - Application answer will automatically be sent to your configured channel
 - Staff can review, accept and deny applications
 
-#### Tickets:
+#### Tickets
 /ticket - Open a support ticket
 /close - Close a support ticket
 
 Automatic staff access
 
-### Disclaimer:
+### Disclaimer
 This project is provided as-is without warranty or support.
 
 The author reserves the right to issue commercial licenses separately.
